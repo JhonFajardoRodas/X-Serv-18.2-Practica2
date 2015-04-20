@@ -1,0 +1,17 @@
+def acortar(solicitud, recurso):
+	if solicitud.method == 'GET':
+		try:
+			urlShorted = shortedURL.objects.get(urlSH=recurso)
+			return HttpResponse("HOLA M")
+
+		except urlDB.DoesNotExist:
+			formHtml = "<html><body><h1>" 
+			formHtml += '<form action="" method="POST">'
+			formHtml += 'Introduce URL: <input type= "text" name="valor"'
+			formHtml += '<input type="submit">'
+			formHtml += '</form>' 
+			formHtml +=  "</h1></body></html>"
+
+			return HttpResponseNotFound("No existe la url solicitada" + formHtml)
+
+		#return HttpResponse(recurso)
